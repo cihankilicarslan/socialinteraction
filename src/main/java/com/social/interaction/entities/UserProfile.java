@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user_profile")
@@ -49,10 +51,14 @@ public class UserProfile extends BaseEntity {
     @Column(name = "location_id")
     private Long locationId;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_profile_group",
+            joinColumns = @JoinColumn(name = "user_profile_id"),
+            inverseJoinColumns = @JoinColumn(name = "group_id"))
+    private Set<Group> groups = new HashSet<>();
+
     @ManyToOne
-    @JoinColumn(name = "group_id", insertable = false, updatable = false)
-    private Group group;
-
-
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    private User user;
 
 }
