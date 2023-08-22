@@ -10,12 +10,8 @@ import lombok.NoArgsConstructor;
 public class UserRoleDto {
 
     private Long id;
-
     private String firstName;
-
     private String lastName;
-
     private String identityNumber;
-
     private String role;
 }

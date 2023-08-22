@@ -18,7 +18,7 @@ public abstract class AuditEntity extends BaseEntity implements IAuditEntity {
     @Column(name = "updated_user_id")
     private Long updatedUserId;
 
-    @Column(name = "updated_datetime")
+    @Column(name = "updated_date_time")
     @Temporal(TemporalType.TIMESTAMP)
     private LocalDateTime updatedDateTime;
 
