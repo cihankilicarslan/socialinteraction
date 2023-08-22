@@ -16,16 +16,24 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @Table(name = "post_data_groups")
 
-public class PostDataGroups extends BaseEntity {
+public class PostDataGroups {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "post_id")
+    private Long post_id;
 
-    @Column(name = "post_data_title", nullable = false)
+    @Column(name = "post_data_title")
     private String post_data_title;
 
-    @Column(name = "post_details", nullable = false)
+    @Column(name = "post_details")
     private String post_data_detail;
 
 
-    @Column(name = "post_time", nullable = false)
+    @Column(name = "post_time")
     private LocalTime postTime;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id")
+    private Group group;
 
 }
